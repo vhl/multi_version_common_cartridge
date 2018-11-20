@@ -16,5 +16,9 @@
 # along with multi_version_common_cartridge.  If not, see <http://www.gnu.org/licenses/>.
 
 module MultiVersionCommonCartridge
-  VERSION = '0.0.1'.freeze
+  module CartridgeVersions
+    CC_1_1_0 = '1.1.0'.freeze
+    CC_1_2_0 = '1.2.0'.freeze
+    CC_1_3_0 = '1.3.0'.freeze
+  end
 end

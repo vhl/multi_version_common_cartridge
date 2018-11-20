@@ -16,5 +16,39 @@
 # along with multi_version_common_cartridge.  If not, see <http://www.gnu.org/licenses/>.
 
 module MultiVersionCommonCartridge
-  VERSION = '0.0.1'.freeze
+  class Cartridge
+    attr_accessor :items
+
+    def initialize
+      @items = []
+    end
+
+    def manifest
+      @manifest ||= Manifest.new
+    end
+
+    def add_item(item)
+      @items << item
+    end
+
+    def all_items
+      @all_items ||= begin
+                       @items.each_with_object([]) do |item, memo|
+                         memo << item
+                         child_items(item, memo)
+                       end
+                     end.flatten
+    end
+
+    def all_resources
+      @all_resources ||= all_items.map(&:resource).compact
+    end
+
+    private def child_items(item, memo)
+      item.children.each do |child|
+        memo << child
+        child_items(child, memo)
+      end
+    end
+  end
 end

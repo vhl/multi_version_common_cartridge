@@ -13,8 +13,12 @@
 # General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with multi_version_common_cartridge.  If not, see <http://www.gnu.org/licenses/>.
+# along with multi_version_common_cartridge. If not, see <http://www.gnu.org/licenses/>.
 
 module MultiVersionCommonCartridge
-  VERSION = '0.0.1'.freeze
+  module Resources
+    class Resource
+      attr_accessor :identifier
+    end
+  end
 end

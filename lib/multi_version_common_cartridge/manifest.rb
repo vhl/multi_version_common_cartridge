@@ -16,5 +16,19 @@
 # along with multi_version_common_cartridge.  If not, see <http://www.gnu.org/licenses/>.
 
 module MultiVersionCommonCartridge
-  VERSION = '0.0.1'.freeze
+  class Manifest
+    attr_accessor :identifier, :titles, :description, :organization_identifier
+
+    def initialize
+      @titles = {}
+    end
+
+    def set_title(title, language: 'en-US')
+      titles[language] = title
+    end
+
+    def title(language)
+      titles[language]
+    end
+  end
 end
