@@ -1,0 +1,13 @@
+*.gem
+*~
+.DS_Store
+/.config
+/coverage/
+/spec/reports/
+/spec/examples.txt
+/tmp/
+/.bundle/
+/vendor/bundle
+Gemfile.lock
+.ruby-version
+.ruby-gemset

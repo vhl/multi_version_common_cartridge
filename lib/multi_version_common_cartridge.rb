@@ -1,0 +1,1 @@
+require 'multi_version_common_cartridge/version'

@@ -1,0 +1,54 @@
+require: rubocop-rspec
+
+AllCops:
+  DisplayCopNames: true
+  TargetRubyVersion: 2.3
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+    - '**/*.rb'
+  Exclude:
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'vendor/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/AccessModifierDeclarations:
+  EnforcedStyle: inline
+
+Metrics/LineLength:
+  Max: 100
+
+RSpec/NestedGroups:
+  Max: 5
+
+RSpec/ExampleLength:
+  Max: 19
+
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+
+Style/PredicateName:
+  NamePrefixBlacklist:
+    - is_
+  # Exclude Rspec specs because there is a strong convention to write spec
+  # helpers in the form of `have_something` or `be_something`.
+  Exclude:
+    - 'spec/**/*'
+
+# Exclude Rspec specs because top level describe blocks are going to have lots
+# more than 25 lines.
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+# Exclude Rspec specs because we can easily have more than 3 levels of nesting
+# of describe, context, and it blocks.
+Metrics/BlockNesting:
+  Exclude:
+    - 'spec/**/*'
