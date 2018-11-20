@@ -16,5 +16,21 @@
 # along with multi_version_common_cartridge.  If not, see <http://www.gnu.org/licenses/>.
 
 module MultiVersionCommonCartridge
-  VERSION = '0.0.1'.freeze
+  module Writers
+    module SupportedVersions
+      SUPPORTED_VERSIONS = [
+        MultiVersionCommonCartridge::CartridgeVersions::CC_1_1_0,
+        MultiVersionCommonCartridge::CartridgeVersions::CC_1_2_0,
+        MultiVersionCommonCartridge::CartridgeVersions::CC_1_3_0
+      ].freeze
+      UNSUPPORTED_VERSION_MSG_TEMPLATE = "Unsupported common cartridge version '%<version>s'".freeze
+
+      def validate_version(version)
+        unless SUPPORTED_VERSIONS.include?(version)
+          raise ArgumentError, format(UNSUPPORTED_VERSION_MSG_TEMPLATE, version: version)
+        end
+        version
+      end
+    end
+  end
 end

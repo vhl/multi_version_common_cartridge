@@ -16,5 +16,32 @@
 # along with multi_version_common_cartridge.  If not, see <http://www.gnu.org/licenses/>.
 
 module MultiVersionCommonCartridge
-  VERSION = '0.0.1'.freeze
+  module Resources
+    module BasicLtiLink
+      class Vendor
+        attr_accessor :code, :name, :description, :url, :contact_email
+      end
+
+      class BasicLtiLink < MultiVersionCommonCartridge::Resources::Resource
+        attr_accessor :title, :description, :secure_launch_url, :extensions
+
+        def initialize
+          @extensions = []
+        end
+
+        def vendor
+          @vendor ||= Vendor.new
+        end
+      end
+
+      class Extension
+        attr_accessor :platform, :properties
+
+        def initialize(platform)
+          @platform = platform
+          @properties = {}
+        end
+      end
+    end
+  end
 end

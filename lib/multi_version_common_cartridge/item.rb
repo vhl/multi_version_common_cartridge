@@ -16,5 +16,15 @@
 # along with multi_version_common_cartridge.  If not, see <http://www.gnu.org/licenses/>.
 
 module MultiVersionCommonCartridge
-  VERSION = '0.0.1'.freeze
+  class Item
+    attr_accessor :title, :identifier, :resource, :children
+
+    def initialize
+      @children = []
+    end
+
+    def add_item(item)
+      children << item
+    end
+  end
 end

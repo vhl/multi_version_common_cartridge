@@ -16,5 +16,31 @@
 # along with multi_version_common_cartridge.  If not, see <http://www.gnu.org/licenses/>.
 
 module MultiVersionCommonCartridge
-  VERSION = '0.0.1'.freeze
+  module Writers
+    class BasicLtiExtensionWriter
+      include SupportedVersions
+
+      attr_reader :extension
+
+      def initialize(extension, version)
+        @extension = extension
+        @version = validate_version(version)
+      end
+
+      def finalize
+      end
+
+      def extension_element
+        @extension_element ||= CommonCartridge::Elements::Resources::BasicLtiLink::Extension.new.tap do |element|
+          element.platform = extension.platform
+          element.properties = extension.properties.map do |key, value|
+            CommonCartridge::Elements::Resources::BasicLtiLink::ExtensionProperty.new(
+              name: key, value: value
+            )
+          end
+        end
+      end
+    end
+  end
 end
+
