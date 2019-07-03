@@ -163,6 +163,74 @@ describe MultiVersionCommonCartridge::Writers::BasicLtiLinkWriter do
     end
   end
 
+  context 'when finalizing for version 1.3.0,' do
+    let(:version) { MultiVersionCommonCartridge::CartridgeVersions::THIN_CC_1_3_0 }
+    let(:lti_element) { basic_lti_link_writer.basic_lti_link_element }
+
+    before do
+      basic_lti_link.identifier = identifier
+      basic_lti_link.title = title
+      basic_lti_link.description = description
+      basic_lti_link.secure_launch_url = secure_launch_url
+      basic_lti_link_writer.finalize
+    end
+
+    describe '#basic_lti_link_element' do
+      let(:required_namespaces) do
+        described_class::REQUIRED_NAMESPACES[version]
+      end
+      let(:required_schema_locations) do
+        described_class::REQUIRED_SCHEMA_LOCATIONS[version]
+      end
+
+      it 'returns a basic lti link element' do
+        expect(lti_element).to be_a(CommonCartridge::Elements::Resources::BasicLtiLink::BasicLtiLink)
+      end
+
+      it 'sets the required xml namespaces' do
+        expect(lti_element.xmlns).to eq(
+          required_namespaces['xmlns']
+        )
+        expect(lti_element.xmlns_blti).to eq(
+          required_namespaces['xmlns:blti']
+        )
+        expect(lti_element.xmlns_lticm).to eq(
+          required_namespaces['xmlns:lticm']
+        )
+        expect(lti_element.xmlns_lticp).to eq(
+          required_namespaces['xmlns:lticp']
+        )
+        expect(lti_element.xmlns_xsi).to eq(
+          required_namespaces['xmlns:xsi']
+        )
+        expect(lti_element.xsi_schema_location).to eq(
+          required_schema_locations.flatten.join(' ')
+        )
+      end
+
+      it 'sets the basic lti link element title' do
+        expect(lti_element.title).to eq(title)
+      end
+
+      it 'sets the basic lti link element description' do
+        expect(lti_element.description).to eq(description)
+      end
+
+      it 'sets the basic lti link element secure launch url' do
+        expect(lti_element.secure_launch_url).to eq(secure_launch_url)
+      end
+
+      it 'sets the basic lti link element vendor' do
+        expect(lti_element.vendor).to eq(vendor_element)
+      end
+
+      it 'sets the basic lti link element extensions' do
+        basic_lti_link.extensions << extension
+        expect(lti_element.extensions).to eq([extension_element])
+      end
+    end
+  end
+
   describe '#create_files' do
     let(:nokogiri_builder) { instance_double(Nokogiri::XML::Builder) }
     let(:xml_saver) { instance_double(SaxMachineNokogiriXmlSaver) }

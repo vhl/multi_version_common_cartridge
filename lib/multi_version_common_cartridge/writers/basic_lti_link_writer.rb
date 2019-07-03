@@ -39,6 +39,20 @@ module MultiVersionCommonCartridge
           'xmlns:lticm' => 'http://www.imsglobal.org/xsd/imslticm_v1p0',
           'xmlns:lticp' => 'http://www.imsglobal.org/xsd/imslticp_v1p0',
           'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance'
+        },
+        MultiVersionCommonCartridge::CartridgeVersions::THIN_CC_1_2_0 => {
+          'xmlns' => 'http://www.imsglobal.org/xsd/imslticc_v1p2',
+          'xmlns:blti' => 'http://www.imsglobal.org/xsd/imsbasiclti_v1p0',
+          'xmlns:lticm' => 'http://www.imsglobal.org/xsd/imslticm_v1p0',
+          'xmlns:lticp' => 'http://www.imsglobal.org/xsd/imslticp_v1p0',
+          'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance'
+        },
+        MultiVersionCommonCartridge::CartridgeVersions::THIN_CC_1_3_0 => {
+          'xmlns' => 'http://www.imsglobal.org/xsd/imslticc_v1p3',
+          'xmlns:blti' => 'http://www.imsglobal.org/xsd/imsbasiclti_v1p0',
+          'xmlns:lticm' => 'http://www.imsglobal.org/xsd/imslticm_v1p0',
+          'xmlns:lticp' => 'http://www.imsglobal.org/xsd/imslticp_v1p0',
+          'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance'
         }
       }.freeze
       REQUIRED_SCHEMA_LOCATIONS = {
@@ -95,6 +109,42 @@ module MultiVersionCommonCartridge
             'http://www.imsglobal.org/xsd/imslticp_v1p0',
             'http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticp_v1p0.xsd'
           ]
+        ],
+        MultiVersionCommonCartridge::CartridgeVersions::THIN_CC_1_2_0 => [
+          [
+            'http://www.imsglobal.org/xsd/imslticc_v1p2',
+            'http://www.imsglobal.org/xsd/lti/ltiv1p2/imslticc_v1p2.xsd'
+          ],
+          [
+            'http://www.imsglobal.org/xsd/imsbasiclti_v1p0',
+            'http://www.imsglobal.org/xsd/lti/ltiv1p0/imsbasiclti_v1p0p1.xsd'
+          ],
+          [
+            'http://www.imsglobal.org/xsd/imslticm_v1p0',
+            'http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticm_v1p0.xsd'
+          ],
+          [
+            'http://www.imsglobal.org/xsd/imslticp_v1p0',
+            'http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticp_v1p0.xsd'
+          ]
+        ],
+        MultiVersionCommonCartridge::CartridgeVersions::THIN_CC_1_3_0 => [
+          [
+            'http://www.imsglobal.org/xsd/imslticc_v1p3',
+            'http://www.imsglobal.org/xsd/lti/ltiv1p3/imslticc_v1p3.xsd'
+          ],
+          [
+            'http://www.imsglobal.org/xsd/imsbasiclti_v1p0',
+            'http://www.imsglobal.org/xsd/lti/ltiv1p0/imsbasiclti_v1p0p1.xsd'
+          ],
+          [
+            'http://www.imsglobal.org/xsd/imslticm_v1p0',
+            'http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticm_v1p0.xsd'
+          ],
+          [
+            'http://www.imsglobal.org/xsd/imslticp_v1p0',
+            'http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticp_v1p0.xsd'
+          ]
         ]
       }.freeze
       MESSAGES = {
@@ -105,7 +155,9 @@ module MultiVersionCommonCartridge
       TYPE = {
         MultiVersionCommonCartridge::CartridgeVersions::CC_1_1_0 => 'imsbasiclti_xmlv1p0',
         MultiVersionCommonCartridge::CartridgeVersions::CC_1_2_0 => 'imsbasiclti_xmlv1p0',
-        MultiVersionCommonCartridge::CartridgeVersions::CC_1_3_0 => 'imsbasiclti_xmlv1p3'
+        MultiVersionCommonCartridge::CartridgeVersions::CC_1_3_0 => 'imsbasiclti_xmlv1p3',
+        MultiVersionCommonCartridge::CartridgeVersions::THIN_CC_1_2_0 => 'imsbasiclti_xmlv1p0',
+        MultiVersionCommonCartridge::CartridgeVersions::THIN_CC_1_3_0 => 'imsbasiclti_xmlv1p3'
       }.freeze
       BASIC_LTI_LINK_FILENAME = 'basic_lti_link.xml'.freeze
 

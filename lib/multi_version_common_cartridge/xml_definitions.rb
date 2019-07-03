@@ -20,13 +20,17 @@ module MultiVersionCommonCartridge
     SCHEMA = {
       MultiVersionCommonCartridge::CartridgeVersions::CC_1_1_0 => 'IMS Common Cartridge',
       MultiVersionCommonCartridge::CartridgeVersions::CC_1_2_0 => 'IMS Common Cartridge',
-      MultiVersionCommonCartridge::CartridgeVersions::CC_1_3_0 => 'IMS Common Cartridge'
+      MultiVersionCommonCartridge::CartridgeVersions::CC_1_3_0 => 'IMS Common Cartridge',
+      MultiVersionCommonCartridge::CartridgeVersions::THIN_CC_1_2_0 => 'IMS Thin Common Cartridge',
+      MultiVersionCommonCartridge::CartridgeVersions::THIN_CC_1_3_0 => 'IMS Thin Common Cartridge'
     }.freeze
 
     SCHEMA_VERSION = {
       MultiVersionCommonCartridge::CartridgeVersions::CC_1_1_0 => '1.1.0',
       MultiVersionCommonCartridge::CartridgeVersions::CC_1_2_0 => '1.2.0',
-      MultiVersionCommonCartridge::CartridgeVersions::CC_1_3_0 => '1.3.0'
+      MultiVersionCommonCartridge::CartridgeVersions::CC_1_3_0 => '1.3.0',
+      MultiVersionCommonCartridge::CartridgeVersions::THIN_CC_1_2_0 => '1.2.0',
+      MultiVersionCommonCartridge::CartridgeVersions::THIN_CC_1_3_0 => '1.3.0'
     }.freeze
 
     REQUIRED_NAMESPACES = {
@@ -48,6 +52,18 @@ module MultiVersionCommonCartridge
         'xmlns:lomimscc' => 'http://ltsc.ieee.org/xsd/imsccv1p3/LOM/manifest',
         'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance'
       },
+      MultiVersionCommonCartridge::CartridgeVersions::THIN_CC_1_2_0 => {
+        'xmlns' => 'http://www.imsglobal.org/xsd/imsccv1p2/imscp_v1p1',
+        'xmlns:lom' => 'http://ltsc.ieee.org/xsd/imsccv1p2/LOM/resource',
+        'xmlns:lomimscc' => 'http://ltsc.ieee.org/xsd/imsccv1p2/LOM/manifest',
+        'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance'
+      },
+      MultiVersionCommonCartridge::CartridgeVersions::THIN_CC_1_3_0 => {
+        'xmlns' => 'http://www.imsglobal.org/xsd/imsccv1p3/imscp_v1p1',
+        'xmlns:lom' => 'http://ltsc.ieee.org/xsd/imsccv1p3/LOM/resource',
+        'xmlns:lomimscc' => 'http://ltsc.ieee.org/xsd/imsccv1p3/LOM/manifest',
+        'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance'
+      }
     }.freeze
 
     REQUIRED_SCHEMA_LOCATIONS = {
@@ -80,6 +96,38 @@ module MultiVersionCommonCartridge
         ]
       ],
       MultiVersionCommonCartridge::CartridgeVersions::CC_1_3_0 => [
+        [
+          'http://www.imsglobal.org/xsd/imsccv1p3/imscp_v1p1',
+          'http://www.imsglobal.org/profile/cc/ccv1p3/ccv1p3_imscp_v1p2_v1p0.xsd'
+        ],
+        [
+          'http://www.imsglobal.org/xsd/imsccv1p3/imscsmd_v1p0',
+          'http://www.imsglobal.org/profile/cc/ccv1p3/ccv1p3_imscsmd_v1p0.xsd'
+        ],
+        [
+          'http://ltsc.ieee.org/xsd/imsccv1p3/LOM/resource',
+          'http://www.imsglobal.org/profile/cc/ccv1p3/LOM/ccv1p3_lomresource_v1p0.xsd'
+        ],
+        [
+          'http://ltsc.ieee.org/xsd/imsccv1p3/LOM/manifest',
+          'http://www.imsglobal.org/profile/cc/ccv1p3/LOM/ccv1p3_lommanifest_v1p0.xsd'
+        ]
+      ],
+      MultiVersionCommonCartridge::CartridgeVersions::THIN_CC_1_2_0 => [
+        [
+          'http://www.imsglobal.org/xsd/imsccv1p2/imscp_v1p1',
+          'http://www.imsglobal.org/profile/cc/ccv1p2/ccv1p2_imscp_v1p2_v1p0.xsd'
+        ],
+        [
+          'http://ltsc.ieee.org/xsd/imsccv1p2/LOM/resource',
+          'http://www.imsglobal.org/profile/cc/ccv1p2/LOM/ccv1p2_lomresource_v1p0.xsd'
+        ],
+        [
+          'http://ltsc.ieee.org/xsd/imsccv1p2/LOM/manifest',
+          'http://www.imsglobal.org/profile/cc/ccv1p2/LOM/ccv1p2_lommanifest_v1p0.xsd'
+        ]
+      ],
+      MultiVersionCommonCartridge::CartridgeVersions::THIN_CC_1_3_0 => [
         [
           'http://www.imsglobal.org/xsd/imsccv1p3/imscp_v1p1',
           'http://www.imsglobal.org/profile/cc/ccv1p3/ccv1p3_imscp_v1p2_v1p0.xsd'
