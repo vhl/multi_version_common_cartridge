@@ -72,4 +72,44 @@ describe MultiVersionCommonCartridge::Writers::ManifestMetadataWriter do
       end
     end
   end
+
+  context 'when finalizing for version thin 1.3.0,' do
+    let(:version) { MultiVersionCommonCartridge::CartridgeVersions::THIN_CC_1_3_0 }
+
+    describe '#metadata_element' do
+      it 'returns a metadata element' do
+        writer.finalize
+        expect(writer.metadata_element).to be_a(CommonCartridge::Elements::Metadata)
+      end
+
+      it 'sets the schema element' do
+        writer.finalize
+        expect(writer.metadata_element.schema).to eq('IMS Thin Common Cartridge')
+      end
+
+      it 'sets the schema version to the correct version' do
+        writer.finalize
+        expect(writer.metadata_element.schemaversion).to eq('1.3.0')
+      end
+
+      context 'when no title are set,' do
+        it 'sets lom:title to empty' do
+          writer.finalize
+          expect(writer.metadata_element.lom.general.title.values).to be_empty
+        end
+      end
+
+      context 'when a title is set,' do
+        it 'adds an entry to the lom:title for each title' do
+          manifest.set_title('Good morning', language: 'en-US')
+          manifest.set_title('Bonjour', language: 'fr-FR')
+
+          writer.finalize
+          expect(writer.metadata_element.lom.general.title.values).to eq(
+            manifest.titles
+          )
+        end
+      end
+    end
+  end
 end

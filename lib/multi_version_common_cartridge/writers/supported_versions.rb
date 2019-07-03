@@ -21,7 +21,9 @@ module MultiVersionCommonCartridge
       SUPPORTED_VERSIONS = [
         MultiVersionCommonCartridge::CartridgeVersions::CC_1_1_0,
         MultiVersionCommonCartridge::CartridgeVersions::CC_1_2_0,
-        MultiVersionCommonCartridge::CartridgeVersions::CC_1_3_0
+        MultiVersionCommonCartridge::CartridgeVersions::CC_1_3_0,
+        MultiVersionCommonCartridge::CartridgeVersions::THIN_CC_1_2_0,
+        MultiVersionCommonCartridge::CartridgeVersions::THIN_CC_1_3_0
       ].freeze
       UNSUPPORTED_VERSION_MSG_TEMPLATE = "Unsupported common cartridge version '%<version>s'".freeze
 

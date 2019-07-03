@@ -20,5 +20,7 @@ module MultiVersionCommonCartridge
     CC_1_1_0 = '1.1.0'.freeze
     CC_1_2_0 = '1.2.0'.freeze
     CC_1_3_0 = '1.3.0'.freeze
+    THIN_CC_1_2_0 = 'Thin 1.2.0'.freeze
+    THIN_CC_1_3_0 = 'Thin 1.3.0'.freeze
   end
 end
