@@ -6,7 +6,7 @@ require 'multi_version_common_cartridge/version'
 Gem::Specification.new do |spec|
   spec.name        = 'multi_version_common_cartridge'
   spec.version     = MultiVersionCommonCartridge::VERSION
-  spec.authors     = ['Vista Higher Learning, Inc.', 'Remy Obein']
+  spec.authors     = ['Vista Higher Learning, Inc.']
   spec.email       = ['ops@vistahigherlearning.com', 'remy@cassia.tech']
   spec.summary     = 'Creates IMS Common Cartridge files, supporting ' \
                      'several versions of the CC standard.'
