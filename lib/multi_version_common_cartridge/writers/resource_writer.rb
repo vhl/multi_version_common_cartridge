@@ -1,5 +1,4 @@
 # multi_version_common_cartridge
-# Copyright © 2019 Remy Obein <remy@cassia.tech>
 # Copyright © 2019 Vista Higher Learning, Inc.
 #
 # multi_version_common_cartridge is free software: you can redistribute it
