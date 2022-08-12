@@ -51,6 +51,7 @@ describe MultiVersionCommonCartridge::Writers::BasicLtiLinkWriter do
       it 'creates a random identifier' do
         basic_lti_link.title = title
         basic_lti_link.secure_launch_url = secure_launch_url
+        basic_lti_link.launch_url = secure_launch_url
         basic_lti_link_writer.finalize
         expect(basic_lti_link.identifier).not_to be_empty
       end
@@ -61,6 +62,7 @@ describe MultiVersionCommonCartridge::Writers::BasicLtiLinkWriter do
         basic_lti_link.identifier = identifier
         basic_lti_link.title = title
         basic_lti_link.secure_launch_url = secure_launch_url
+        basic_lti_link.launch_url = secure_launch_url
         basic_lti_link_writer.finalize
         expect(basic_lti_link.identifier).to eq(identifier)
       end
@@ -70,6 +72,7 @@ describe MultiVersionCommonCartridge::Writers::BasicLtiLinkWriter do
       it 'raises an error' do
         basic_lti_link.identifier = identifier
         basic_lti_link.secure_launch_url = secure_launch_url
+        basic_lti_link.launch_url = secure_launch_url
         expect { basic_lti_link_writer.finalize }.to raise_error(
           StandardError,
           described_class::MESSAGES[:no_title]
@@ -82,6 +85,7 @@ describe MultiVersionCommonCartridge::Writers::BasicLtiLinkWriter do
         basic_lti_link.identifier = identifier
         basic_lti_link.title = title
         basic_lti_link.secure_launch_url = secure_launch_url
+        basic_lti_link.launch_url = secure_launch_url
         expect { basic_lti_link_writer.finalize }.not_to raise_error
       end
     end
@@ -90,6 +94,7 @@ describe MultiVersionCommonCartridge::Writers::BasicLtiLinkWriter do
       basic_lti_link.identifier = identifier
       basic_lti_link.title = title
       basic_lti_link.secure_launch_url = secure_launch_url
+      basic_lti_link.launch_url = secure_launch_url
       basic_lti_link_writer.finalize
       expect(vendor_writer).to have_received(:finalize)
     end
@@ -218,6 +223,10 @@ describe MultiVersionCommonCartridge::Writers::BasicLtiLinkWriter do
 
       it 'sets the basic lti link element secure launch url' do
         expect(lti_element.secure_launch_url).to eq(secure_launch_url)
+      end
+
+      it 'sets the basic lti link element launch url' do
+        expect(lti_element.launch_url).to eq(secure_launch_url)
       end
 
       it 'sets the basic lti link element vendor' do

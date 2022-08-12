@@ -22,7 +22,7 @@ module MultiVersionCommonCartridge
       end
 
       class BasicLtiLink < MultiVersionCommonCartridge::Resources::Resource
-        attr_accessor :title, :description, :secure_launch_url, :extensions
+        attr_accessor :title, :description, :secure_launch_url, :extensions, :launch_url
 
         def initialize
           @extensions = []
