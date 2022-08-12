@@ -200,6 +200,7 @@ module MultiVersionCommonCartridge
             element.xsi_schema_location = xsi_schema_location
             element.title = resource.title
             element.description = resource.description if resource.description
+            element.launch_url = resource.secure_launch_url
             element.secure_launch_url = resource.secure_launch_url
             element.vendor = vendor_writer.vendor_element
             element.extensions = extensions_element
