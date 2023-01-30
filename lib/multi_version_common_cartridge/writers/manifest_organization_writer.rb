@@ -15,6 +15,7 @@
 # along with multi_version_common_cartridge.  If not, see <http://www.gnu.org/licenses/>.
 
 require 'common_cartridge'
+require 'securerandom'
 
 module MultiVersionCommonCartridge
   module Writers
