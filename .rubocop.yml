@@ -1,8 +1,10 @@
-require: rubocop-rspec
+require:
+  - rubocop-rspec
 
 AllCops:
   DisplayCopNames: true
-  TargetRubyVersion: 2.3
+  NewCops: enable
+  TargetRubyVersion: 3.0
   Include:
     - '**/Rakefile'
     - '**/config.ru'
@@ -21,7 +23,7 @@ Style/FrozenStringLiteralComment:
 Style/AccessModifierDeclarations:
   EnforcedStyle: inline
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 100
 
 RSpec/NestedGroups:
@@ -33,8 +35,8 @@ RSpec/ExampleLength:
 Naming/VariableNumber:
   EnforcedStyle: snake_case
 
-Style/PredicateName:
-  NamePrefixBlacklist:
+Naming/PredicateName:
+  ForbiddenPrefixes:
     - is_
   # Exclude Rspec specs because there is a strong convention to write spec
   # helpers in the form of `have_something` or `be_something`.
