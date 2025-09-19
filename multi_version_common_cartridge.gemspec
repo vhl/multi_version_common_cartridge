@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
     file.match(%r{^(test|spec|features)/})
   end
 
-  spec.add_dependency 'activesupport', '> 2.0', '< 7.0'
+  spec.add_dependency 'activesupport', '> 2.0', '< 8.0'
   spec.add_dependency 'common_cartridge_parser', '~> 1.0'
 
   spec.add_development_dependency 'rspec', '~> 3.8'
