@@ -1,0 +1,7 @@
+appraise 'rails-7-2' do
+  gem 'rails', '7.2.4'
+end
+
+appraise 'rails-8-1' do
+  gem 'rails', '8.1.4'
+end
