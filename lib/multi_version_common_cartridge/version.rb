@@ -15,5 +15,5 @@
 # along with multi_version_common_cartridge.  If not, see <http://www.gnu.org/licenses/>.
 
 module MultiVersionCommonCartridge
-  VERSION = '1.0.5'.freeze
+  VERSION = '1.0.6'.freeze
 end
